@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './index.css'
+import firebase from './firebase';
 
 import Home from './components/Home';
 import Header from './components/Header';
 
 class App extends Component {
+    state = {
+        firebaseInitialized: false
+    }
+
+    componentDidMount() {
+        firebase.isInitialized().then(resultado =>{
+            //retorna o usuario conectado
+            this.setState({firebaseInitialized: resultado})
+        })   
+    }
+
     render() {
-        return (
+        return this.state.firebaseInitialized !== false ? (
             <div>
                 <BrowserRouter>
                     <Header/>
@@ -16,7 +28,9 @@ class App extends Component {
                     </Switch>
                 </BrowserRouter>   
             </div>
-        );
+        ) : (
+            <h1>Carregando...</h1>
+        )
     }
 }
 
