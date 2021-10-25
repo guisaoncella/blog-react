@@ -2,6 +2,7 @@ import app from 'firebase/compat/app'
 import 'firebase/compat/database'
 import 'firebase/compat/auth'
 
+//configurações do firebase
 let firebaseConfig = {
     apiKey: "AIzaSyACZCa6Nr27HKjxEyvRx2bzl22ORIGY2RU",
     authDomain: "blog-b5153.firebaseapp.com",
