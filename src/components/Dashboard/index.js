@@ -26,8 +26,15 @@ class Dashboard extends Component {
         })
     }
 
-    logout(){
+    logout = async () =>{
+        await firebase.logout().catch((error) => {
+            alert('Logout falhou!')
+            console.log(error)
+        })
 
+        localStorage.removeItem("nome")
+        localStorage.removeItem("email")
+        this.props.history.push('/')
     }
 
     render() {
