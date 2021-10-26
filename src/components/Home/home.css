@@ -33,6 +33,7 @@ section#post article header span{
 
 section#post article > img{
     width: 100%;
+    border-radius: 5px;
 }
 
 section#post article footer{
