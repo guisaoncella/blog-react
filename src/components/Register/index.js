@@ -11,18 +11,37 @@ class Register extends Component {
             email: '',
             password: ''
         }
-        this.register = this.register.bind(this);
+        this.cadastrar = this.cadastrar.bind(this);
     }
     
-    register(e){
+    cadastrar(e){
         e.preventDefault()
+        this.register()
+    }
+
+    register = async () => {
+        const {nome, email, password} = this.state
+        let succes = true
+        try{
+            await firebase.register(nome, email, password).catch((error) => {
+                alert('Falha ao cadastrar!')
+                console.log(error.code)
+                succes = false
+            })
+            if (succes){
+                this.props.history.replace('dashboard')
+                alert('Cadastrado com sucesso!')
+            }
+        }catch(error){
+            alert(error.message)
+        }
     }
 
     render() {
         return (
             <div>
                 <h1 id="register-h1">Novo Usuário</h1>   
-                <form onSubmit={this.register} id="register">
+                <form onSubmit={this.cadastrar} id="register">
                     <label>Nome:</label>
                     <input type="text" autoFocus autoComplete="off" value={this.state.nome} 
                         onChange={(e) => this.setState({nome: e.target.value})} placeholder="Seu nome" /><br/>
