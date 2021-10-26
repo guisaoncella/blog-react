@@ -16,7 +16,7 @@ class Login extends Component {
     componentDidMount() {
         if(firebase.getCurrent()){
             return this.props.history.replace('dashboard')    
-        }    
+        }  
     }
 
     entrar(e){
@@ -26,17 +26,23 @@ class Login extends Component {
 
     login = async () => {
         const {email, password} = this.state
-
+        let succes = true
         try{
             await firebase.login(email, password).catch((error) =>{
-                if(error.code === 'auth/user-not-found'){
+                /*if(error.code === 'auth/user-not-found'){
                     alert('Este usuário não existe!')
                 }else{
                     alert('Erro: '+error.code)    
-                } 
-                return null
+                } */
+                alert('Este usuário não existe!')
+                console.log(error.code)
+                succes = false
             })
-            this.props.history.replace('dashboard')
+            if (succes){
+                this.props.history.replace('dashboard')
+                alert('Logado com sucesso!')
+            }
+                
         }catch(error){ 
             alert(error.message)
         }
