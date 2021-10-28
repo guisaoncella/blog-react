@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Link, withRouter} from 'react-router-dom'
+import firebase from '../../firebase';
 
 import './newpost.css'
 
@@ -12,6 +13,13 @@ class NewPost extends Component {
             desricao: ''
         }
         this.cadastrarPost = this.cadastrarPost.bind(this);
+    }
+
+    componentDidMount() {
+        if(!firebase.getCurrent()){
+            this.props.history.replace('/login')
+            return null
+        }
     }
 
     cadastrarPost(){
