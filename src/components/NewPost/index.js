@@ -10,7 +10,7 @@ class NewPost extends Component {
         this.state = {
             titulo: '',
             imagem: '',
-            desricao: ''
+            descricao: ''
         }
         this.cadastrarPost = this.cadastrarPost.bind(this);
     }
@@ -22,8 +22,27 @@ class NewPost extends Component {
         }
     }
 
-    cadastrarPost(){
-
+    cadastrarPost = async (e) =>{
+        e.preventDefault()
+        const {titulo, imagem, descricao} = this.state
+        let succes = true
+        try{
+            if(titulo !== '' && imagem !== '' && descricao !== ''){
+                await firebase.newPost(localStorage.nome, descricao, imagem, titulo).catch((error) => {
+                    alert('Falha ao cadastrar!  '+error.code)
+                    console.log(error.code)
+                    succes = false
+                }) 
+                if(succes){
+                    alert("Postado com sucesso!")
+                }
+                this.props.history.replace('/dashboard')
+            }else{
+                alert("Nenhum campo pode estar vazio!")    
+            }
+        }catch(erro){
+            alert(erro.message)
+        }
     }
     
     render() {
@@ -39,8 +58,8 @@ class NewPost extends Component {
                         onChange={(e) => {this.setState({imagem: e.target.value})}} /><br/>
 
                     <label>Descrição:</label>
-                    <textarea placeholder="Descrição..." value={this.state.desricao} 
-                        onChange={(e) => {this.setState({desricao: e.target.value})}} /><br/>
+                    <textarea placeholder="Descrição..." value={this.state.descricao} 
+                        onChange={(e) => {this.setState({descricao: e.target.value})}} /><br/>
 
                     <button type="submit">Postar</button>
                 </form><br/>

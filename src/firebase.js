@@ -37,6 +37,17 @@ class Firebase{
             nome: nome
         })
     }
+
+    newPost(autor, descricao, imagem, titulo){
+        let posts = app.database().ref('posts')
+        let chave = posts.push().key
+        return posts.child(chave).set({
+            autor: autor,
+            descricao: descricao,
+            imagem: imagem,
+            titulo: titulo
+        })
+    }
     
     isInitialized(){
         return new Promise(resolve =>{
