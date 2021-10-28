@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {Link, withRouter} from 'react-router-dom'
 import firebase from '../../firebase';
 
+import './dashboard.css'
+
 class Dashboard extends Component {
     constructor(props) {
         super(props);
@@ -41,11 +43,13 @@ class Dashboard extends Component {
         return (
             <div id="dashboard">
                 <div className="user-info">
-                    <h1>Olá {this.state.nome}</h1>
-                    <Link to="/dashboard/new">Novo Post</Link>
+                    <h1>Olá {this.state.nome}</h1><br/>
+                    <p>Logado com: {this.state.email}</p>
                 </div>
-                <p>Logado com: {this.state.email}</p>
-                <button onClick={() => this.logout()}>Sair</button>
+                <div className="user-options">
+                    <Link to="/dashboard/new">Novo Post</Link>
+                    <button onClick={() => this.logout()}>Sair</button>    
+                </div>
             </div>
         );
     }
