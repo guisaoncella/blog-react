@@ -39,13 +39,29 @@ form#newpost-form{
     flex-direction: column;
 }
 
-form#newpost-form input{
+form#newpost-form img{
+    margin: 15px 0px 30px 0px;    
+}
+
+form#newpost-form progress{
+    margin: 15px 0px 30px 0px;     
+}
+
+form#newpost-form input.text-input{
     margin-bottom: 15px;
     height: 40px;
     border-radius: 5px;
     border: 1px solid #DDD;
     padding: 0 20px;
     font-size: 14px;
+}
+
+form#newpost-form input.file-input{
+    margin-bottom: 15px;   
+    font-size: 14px; 
+    border-radius: 5px;
+    border: 1px solid #DDD;
+    padding: 10px 20px;
 }
 
 form#newpost-form textarea{

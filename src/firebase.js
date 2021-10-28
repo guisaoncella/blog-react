@@ -1,6 +1,7 @@
 import app from 'firebase/compat/app'
 import 'firebase/compat/database'
 import 'firebase/compat/auth'
+import 'firebase/compat/storage'
 
 //configurações do firebase
 let firebaseConfig = {
@@ -38,6 +39,14 @@ class Firebase{
         })
     }
 
+    imageUpload(uid, image){
+        return app.storage().ref(`images/${uid}/${image.name}`).put(image)   
+    }
+
+    getImageUrl(uid, image){
+        return app.storage().ref(`images/${uid}`).child(image.name).getDownloadURL()
+    }
+
     newPost(autor, descricao, imagem, titulo){
         let posts = app.database().ref('posts')
         let chave = posts.push().key
@@ -57,6 +66,10 @@ class Firebase{
 
     getCurrent(){
         return app.auth().currentUser && app.auth().currentUser.email
+    }
+
+    getUid(){
+        return app.auth().currentUser && app.auth().currentUser.uid
     }
 
     async getUserName(callback){
