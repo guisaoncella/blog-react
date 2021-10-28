@@ -38,7 +38,7 @@ class Home extends Component {
                                     <strong>{post.titulo}</strong>    
                                     <span>Autor: {post.autor}</span>
                                 </div>
-                            </header>
+                            </header><br/>
                             <img src={post.imagem} alt="Capa do post"/>
                             <footer>
                                 <p>{post.descricao}</p>    
