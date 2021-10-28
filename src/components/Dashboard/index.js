@@ -47,7 +47,7 @@ class Dashboard extends Component {
                     <p>Logado com: {this.state.email}</p>
                 </div>
                 <div className="user-options">
-                    <Link to="/dashboard/new">Novo Post</Link>
+                    <Link to="/dashboard/newpost">Novo Post</Link>
                     <button onClick={() => this.logout()}>Sair</button>    
                 </div>
             </div>
