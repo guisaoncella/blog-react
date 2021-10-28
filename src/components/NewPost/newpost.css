@@ -1,0 +1,76 @@
+div#newpost{
+    width: 100%;
+    max-width: 930px;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+div#newpost footer{
+    margin-top: 30px;
+}
+
+div#newpost footer a{
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #272727;
+    color: #FFF;
+    text-decoration: none;
+}
+
+div#newpost footer a:hover{
+    background: #272727e8;
+    transition: all 0.5s;
+}
+
+form#newpost-form{
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto 0;
+    padding: 30px;
+    background: #FFF;
+    border: 1px solid #DDD;
+    display: flex;
+    flex-direction: column;
+}
+
+form#newpost-form input{
+    margin-bottom: 15px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #DDD;
+    padding: 0 20px;
+    font-size: 14px;
+}
+
+form#newpost-form textarea{
+    margin-bottom: 15px;
+    height: 200px;
+    border-radius: 5px;
+    border: 1px solid #DDD;
+    padding: 10px;
+    font-size: 14px;    
+    resize: vertical;
+}
+
+form#newpost-form button{
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 0px;
+    background: #096e09;
+    color: #FFF;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+form#newpost-form button:hover{
+    background: #188318;
+    transition: all 0.5s;
+}

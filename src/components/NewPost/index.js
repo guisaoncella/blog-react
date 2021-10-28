@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {Link, withRouter} from 'react-router-dom'
 
+import './newpost.css'
+
 class NewPost extends Component {
     constructor(props) {
         super(props);
@@ -18,11 +20,8 @@ class NewPost extends Component {
     
     render() {
         return (
-            <div id="new-post">
-                <header>
-                    <Link to="/dashboard">Voltar</Link>
-                </header> 
-                <form onSubmit={this.cadastrarPost}>
+            <div id="newpost">
+                <form onSubmit={this.cadastrarPost} id="newpost-form">
                     <label>Titulo:</label>
                     <input type="text" placeholder="Titulo do post" value={this.state.titulo} 
                         onChange={(e) => {this.setState({titulo: e.target.value})}} autoFocus /><br/>
@@ -36,7 +35,10 @@ class NewPost extends Component {
                         onChange={(e) => {this.setState({desricao: e.target.value})}} /><br/>
 
                     <button type="submit">Postar</button>
-                </form>
+                </form><br/>
+                <footer>
+                    <Link to="/dashboard">Voltar</Link>
+                </footer>
             </div>
         );
     }
